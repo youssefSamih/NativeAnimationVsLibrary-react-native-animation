@@ -16,13 +16,13 @@ const VanillaAnimation = () => {
     onPanResponderMove: Animated.event([
       null,
       {dx: position.x, dy: position.y},
-    ]),
+    ]), // Creates a function to handle the movement and set offsets
     onPanResponderRelease: () => {
       position.flattenOffset(); //Flatten the offset so it resets the default positioning
     },
   });
   // useEffect(() =>
-  //   new Array(5000).fill(0).map(() => console.log('JS thread busy!')),
+  //   new Array(51111).fill(0).map(() => console.log('JS thread busy!')),
   // ); // do some memory leak to keep javascript thread busy
   return (
     <View style={styles.container}>

@@ -2,13 +2,22 @@ import React from 'react';
 import {View} from 'react-native';
 import {PanGestureHandler} from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
+import {
+  usePanGestureHandler,
+  withOffset,
+} from 'react-native-redash/lib/module/v1';
 import {styles} from './style';
 
 const GestureAnimations = () => {
+  const {gestureHandler, translation, state} = usePanGestureHandler();
+  const translateX = withOffset(translation.x, state);
+  const translateY = withOffset(translation.y, state);
   return (
     <View style={styles.container}>
-      <PanGestureHandler>
-        <Animated.View style={styles.ball} />
+      <PanGestureHandler {...gestureHandler}>
+        <Animated.View
+          style={[styles.ball, {transform: [{translateX}, {translateY}]}]}
+        />
       </PanGestureHandler>
     </View>
   );
